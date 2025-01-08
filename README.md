@@ -5,7 +5,10 @@ Download ROMs from Vimm's Vault directly on to the TrimUI Smart Pro intended and
 ## Instructions 
 Download the zip from Releases.\
 Extract `OctoLair` into `/mnt/SDCARD/Apps`.\
-Launch from Apps Menu, Navigate with DPad Buttons, Select with ``B``.
+Launch from Apps Menu.\
+Navigate with DPad Buttons.\
+Select with ``B``.\
+Back with ``A``.\
 Quit App with ``X``.
 
 ## Features
