@@ -1,5 +1,5 @@
 # OctoLair
-Download ROMs Directly on to the TrimUI Smart Pro intended and only tested for ``CrossMix 1.3.0.1``.
+Download ROMs from Vimm's Vault directly on to the TrimUI Smart Pro intended and only tested for ``CrossMix 1.3.0.1``.
 
 
 ## Instructions 
@@ -11,6 +11,7 @@ Quit App with ``X``.
 ## Features
 + Download ROMs into their respective Roms Folder.
 + Queue Downloads.
+
 
 ## Todo
 - Hide Unsupported Consoles.
