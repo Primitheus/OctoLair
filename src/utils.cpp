@@ -6,7 +6,7 @@ std::unordered_map<std::string, std::string> systemToRomFolder = {
     {"Atari 2600", "ATARI2600"},
     {"Atari 5200", "ATARI5200"},
     {"Atari 7800", "ATARI7800"},
-    {"Nintendo", "FC"}, // Assuming "Nintendo" refers to NES
+    {"Nintendo", "FC"}, 
     {"Master System", "MS"},
     {"TurboGrafx-16", "PCE"}, // TurboGrafx-16 is equivalent to PC Engine
     {"Genesis", "MD"}, // Genesis is equivalent to Mega Drive
@@ -39,8 +39,6 @@ typedef struct curl_slist* (*curl_slist_append_t)(struct curl_slist*, const char
 // curl_off_t
 typedef long long curl_off_t;
 
-
-extern std::atomic<int> downloadProgress;
 
 int progressCallback(void* ptr, curl_off_t total, curl_off_t now, curl_off_t, curl_off_t) {
     if (total > 0) {
@@ -237,6 +235,8 @@ std::vector<Game> parseGamesHTML(const std::string &htmlContent) {
     return games;
 }
 
+
+
 int downloadGame(std::string console, const std::string &htmlContent) {
     xmlInitParser();
     LIBXML_TEST_VERSION
@@ -372,11 +372,33 @@ int downloadGame(std::string console, const std::string &htmlContent) {
             return -1;
         } else {
             std::cout << "Game downloaded successfully to " << outputPath << std::endl;
+            // check to see if game needs to be unzipped
+        
+
         }
         
     } else {
         dlclose(handle);
         std::cerr << "Failed to initialize curl" << std::endl;
+        return -1;
+    }
+
+    return 0;
+}
+
+int unzipGames(std::string console) {
+    auto it = systemToRomFolder.find(console);
+    if (it == systemToRomFolder.end()) {
+        std::cerr << "Unsupported console: " << console << std::endl;
+        return -1;
+    }
+    std::string romFolder = it->second;
+
+    std::string romPath = "/mnt/SDCARD/Roms/" + romFolder;
+    std::string command = "/mnt/SDCARD/System/bin/7zz x " + romPath + "/*.7z -o" + romPath + " -y";
+    int res = system(command.c_str());
+    if (res != 0) {
+        std::cerr << "Failed to unzip games: " << strerror(errno) << std::endl;
         return -1;
     }
 
