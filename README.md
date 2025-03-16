@@ -9,24 +9,21 @@ Launch from Apps Menu.\
 Navigate with DPad Buttons.\
 Select with ``B``.\
 Back with ``A``.\
-Quit App with ``X``.
+Quit App with ``X``.\
+Extract PS1 & PSP with ``SELECT``.
 
 ## Features
 + Download ROMs into their respective Roms Folder.
 + Queue Downloads.
++ Extract ROMs compressed into 7z for PSP & PS1.
 
 
 ## Todo
 - Hide Unsupported Consoles.
 - Implement Themeing Options.
-- Unzip ROMs that require it.
 - Include Relevant Console and Game Artwork for the UI.
-  
-
-## Issues
-+ It currently doesn't extract the ROMs from the zip file, so emulators the explicitly require the ROM do not currently run out of the box. e.g PSP.
-+ Currently not hiding consoles that the TrimUI doesn't support, downloading games won't work anyway.
-
+- Add Localisation Option.
+- Improve ROM extraction.
 
 
 
